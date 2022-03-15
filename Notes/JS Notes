@@ -1,0 +1,156 @@
+15-03-2022
+
+JS Introduction:- JavaScript is an open-source and popular client-side scripting language supported by all browsers. JavaScript is mainly used for enhancing the interaction of the webpage with users by making it more lively and interactive. It is also used for game development and mobile application development. Programs written in this language are referred to as "scripts" and can be written right in a web page’s HTML and run automatically as the page loads.
+
+JS can also be executed on the server-side or on any device which has the support of JS engine. Every browser has an embedded engine which is also called a “JavaScript virtual machine”. For eg:- We have "V8" engine in Chrome, Opera and Edge, "SpiderMonkey" – in Firefox and so on.
+
+Being a scripting language, JavaScript cannot run on its own. It's the browser that is responsible for running JavaScript code. When a user requests an HTML page with JavaScript in it, the script is sent to the browser and it is up to the browser to execute it. 
+
+All our JS code is placed within <script> tags (<script> and </script>) if we are keeping your JavaScript code within the HTML document itself. Syntax:-
+
+<script type="text/javascript"></script>
+
+Although, type="text/javascript" is no longer required in HTML5.
+
+Example:-
+
+index.html
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Example 1</title>
+    <script src="./js/script.js"></script>
+</head>
+
+<body></body>
+
+</html>
+
+script.js
+
+alert("I'm Javascript!")
+alert("This is my first program.")
+
+
+"use strict" mode- To keep the old code working, most modifications are off by default. To enable them we make use of "use strict" mode. When it is located at the top of a script, the whole script works the “modern” way. But once we enter strict mode, there’s no going back.
+
+Declaring Variables in JS- To declare a variable in JS, we make use of the 'let' keyword. In order to declare a constant, we make use of the 'const' keyword. They cannot be reassigned. An attempt to do so would cause an error.
+
+Data Types in JS:-
+
+a) Number Data Type- It represents both integer and floating point numbers. We can perform normal arithmetic operations like multiplication *, division /, addition +, subtraction -, and so on. Besides regular numbers, there are so-called “special numeric values” which also belong to this data type: Infinity, -Infinity and NaN.
+
+b) Strings Data Type- A string (or a text string) is a series of characters like "My Text". Strings are written with quotes. You can use single or double quotes. We also have an extra option of using "Backticks". They allow us to embed variables and expressions into a string by wrapping them in ${…}. For example:-
+
+let name = "John";
+alert( `Hello, ${name}!` ); // Hello, John!
+
+// embedding an expression
+alert( `the result is ${1 + 2}` ); // the result is 3
+
+c) Boolean Data Type- It can only have two values: true or false. They are often used in conditional testing. Example:-
+
+let isGreater = 4 > 1;
+alert( isGreater ); // true
+
+d) Javascript Arrays- JavaScript arrays are written with square brackets. Array items are separated by commas. Example:-
+
+let fruits = ["Mango", "Apple", "Grapes", "Cherry"]
+
+e) Null Value- It's a special value which represents “nothing”, “empty” or “value unknown”.
+
+f) Undefined Value- In JavaScript, a variable without a value, has the value undefined. The type is also undefined. Example:-
+
+let var1; // Value is undefined
+
+g) JavaScript Objects- Objects are written with curly braces {}. Object properties are written as key:value pairs, separated by commas. Example:-
+
+const person = {firstName:"Peter", lastName:"Adams", age:35, gender:"male"};
+
+h) typeof operator- JavaScript typeof operator to find the type of a JavaScript variable. The typeof operator returns the type of a variable or an expression
+
+
+Javascript Functions:- A JavaScript function is a block of code designed to perform a particular task. It is executed when an event is fired up. A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses (). Syntax:-
+
+function name(parameter1, parameter2, parameter3) {
+  // code to be executed
+}
+
+Example:-
+
+index.html
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Functions Examples</title>
+</head>
+
+<body>
+    <div id="sumNos"></div>
+</body>
+<script src="./js/script.js"></script>
+
+</html>
+
+script.js
+
+function nosSum(var1, var2) {
+    return var1 + var2;
+}
+
+let sum = nosSum(10, 15)
+document.getElementById("sumNos").innerHTML = sum;
+
+
+Javascript Objects- This data type stores values in the form of key-value pairs. Objects can also have methods. Methods are actions that can be performed on objects and are stored in properties as function definitions. Example:-
+
+const person = {
+    firstName: "Arun",
+    lastName: "Sharma",
+    age: 50,
+    eyeColor: "green",
+    fullName: function() {
+        return this.firstName + " " + this.lastName
+    }
+};
+
+document.write(person.fullName())
+
+document.getElementById("objContent").innerHTML =
+    person.firstName + " " + person.lastName + " is " + person.age + " years old.";
+
+
+JavaScript Type Conversion- This process is done either automatically or by the use of built-in JS functions.
+a) Converting Strings to Numbers- The global method Number() can convert strings to numbers. It can also be used to convert dates and boolean values to numbers. Apart from it we can also use:-
+-> parseFloat- Parses a string and returns a floating point number
+-> parseInt- Parses a string and returns an integer
+
+b) Converting Numbers to Strings- The global method "String()" can convert numbers to strings. Along with that we can convert boolean and date values using "String()" method. We can also use the Number method "toString()" to achieve the same functionality. Example:-
+
+(120 + 13).toString()
+
+
+
+Looping Statements-
+
+a) For In Loop- This statement loops through the properties of an Object. It can also be used to loop over the properties of an Array. Example:-
+
+const person = {fname:"John", lname:"Doe", age:25};
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+}
+
+b) Array.forEach()- This method calls a callback function once for each array element. The function takes 3 arguments:
+-> The item value
+-> The item index
+-> The array itself
