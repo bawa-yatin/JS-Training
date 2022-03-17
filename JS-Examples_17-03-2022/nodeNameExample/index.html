@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Name Example</title>
+</head>
+
+<body>
+    <div id="myDIV">This is "myDIV".</div>
+
+    <p>Node name, type and value of "myDIV"s first child is:</p>
+    <p id="demo"></p>
+
+    <script>
+        const element = document.getElementById("myDIV").firstChild;
+        let text = "";
+        text += "Name: " + x.nodeName + "<br>";
+        text += "Value: " + x.nodeValue + "<br>";
+        text += "Type: " + x.nodeType;
+        document.getElementById("demo").innerHTML = text;
+    </script>
+</body>
+
+</html>

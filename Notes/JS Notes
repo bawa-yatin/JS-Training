@@ -36,7 +36,7 @@ alert("I'm Javascript!")
 alert("This is my first program.")
 
 
-"use strict" mode- To keep the old code working, most modifications are off by default. To enable them we make use of "use strict" mode. When it is located at the top of a script, the whole script works the “modern” way. But once we enter strict mode, there’s no going back.
+"use strict" mode- To keep the old code working, most modifications are off by default. To enable them we make use of "use strict" mode. When it is located at the top of a script, the whole script works the “modern” way. But once we enter strict mode, there’s no going back. It helps us to write cleaner code, like preventing us from using undeclared variables.
 
 Declaring Variables in JS- To declare a variable in JS, we make use of the 'let' keyword. In order to declare a constant, we make use of the 'const' keyword. They cannot be reassigned. An attempt to do so would cause an error.
 
@@ -154,3 +154,418 @@ b) Array.forEach()- This method calls a callback function once for each array el
 -> The item value
 -> The item index
 -> The array itself
+
+c) For Of loop- This statement allows us to iterate through the values of an iterable object like arrays, strings, maps etc. Example:-
+
+const fruits = ["Mango", "Apple", "Papaya"];
+
+let text = "";
+for (let x of fruits) {
+  text += x;
+} 
+
+
+
+16-03-2022
+
+Javascript Sets- A JavaScript Set is a collection of unique values. Each value can only occur once in a Set. In order to create a set, we use:-
+a) "new Set" method and pass an array inside it
+b) To add values and variables inside a set, we use "add()" method
+c) delete()- Removes an element from a Set
+d) has()- Returns true if a value exists in the Set
+e) values()- This method returns a new iterator object containing all the values in a Set
+
+Example:-
+
+const names = new Set()
+
+names.add("Sudhir");
+names.add("Saurabh");
+names.add("Arun")
+
+document.getElementById('set-size').innerHTML = names.size
+
+let elements = ""
+names.forEach(eleList)
+document.getElementById("set-elements").innerHTML = elements
+
+function eleList(value) {
+    elements += value + "<br>"
+}
+
+
+Javascript Maps- A Map holds key-value pairs where the keys can be any datatype. It remembers the original insertion order of the keys. Some of the essential map methods:-
+a) new Map()- Creates a new Map
+b) set()- Sets the value for a key in a Map
+c) get()- Gets the value for a key in a Map
+d) delete()- Removes a Map element specified by the key
+e) has()- Returns true if a key exists in a Map
+f) forEach()- Calls a function for each key/value pair in a Map
+g) entries()- Returns an iterator with the [key, value] pairs in a Map
+
+Example:-
+
+const fruits = new Map();
+
+fruits.set("apples", 500)
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+
+let mapElements = ""
+
+for (let x of fruits.entries()) {
+    mapElements += x + "<br>"
+}
+
+document.getElementById("elements").innerHTML = mapElements
+document.write(fruits.has("bananas"))
+
+
+JavaScript Errors-
+
+a) The try statement defines a code block to run.
+b) The catch statement defines a code block to handle any error.
+c) The finally statement defines a code block to run regardless of the result.
+d) The throw statement defines a custom error.
+
+Example:-
+
+function checkValue() {
+    let result = document.getElementById("result");
+    result.innerHTML = "";
+    let value = document.getElementById("numValue").value;
+
+    try {
+        if (value == "") {
+            throw "empty";
+        }
+        if (isNaN(value)) {
+            throw "is not valid";
+        }
+
+        value = Number(value);
+        if (value < 5 || value > 10) {
+            throw "not in range";
+        }
+    } catch (err) {
+        result.innerHTML = "Input is " + err;
+    } finally {
+        document.getElementById("numValue").value = "";
+    }
+}
+
+
+-> JavaScript has a built in error object that provides error information when an error occurs. It provides two useful properties: name and message. Six different values can be returned by the error name property which includes:-
+1) EvalError- An error has occurred in the eval() function
+2) RangeError- A number "out of range" has occurred
+3) ReferenceError- An illegal reference has occurred
+4) SyntaxError- A syntax error has occurred
+5) TypeError- A type error has occurred
+6) URIError- An error in encodeURI() has occurred
+
+
+
+JavaScript Variable Scope- In JS, we have three types of scope:-
+a) Block Scope- Variables declared using 'let' keyword cannot be accessed or modified from outside the block whereas Variables declared using 'var' keyword can be accessed or modified from outside the block.
+b) Local Scope- Variables declared within a JavaScript function, become LOCAL to the function. Example:-
+
+function myFunction() {
+  let carName = "Maruti";
+}
+c) Global Scope- Variables declared outside a function are "Global" in nature. Example:-
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+let carName = "Maruti";
+myFunction();
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Name of the car is:  " + carName;
+}
+</script>
+
+</body>
+</html>
+
+
+
+JavaScript Arrow Function:- Arrow functions allow us to write shorter function syntax. For Example:-
+
+demoFxn = () => {
+  return "Hello World!";
+}
+
+It can also be written as:-
+
+demoFxn = () => "Hello World!"; // We can remove the brackets if the function returns only one statement.
+
+
+
+Javascript Classes- To create a class in JS, we use the keyword "class". Also always add a method named constructor() in it. Example:-
+
+class carDetails {
+    constructor(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+
+    carAge(age) {
+        return age - this.year;
+    }
+}
+
+let c1 = new carDetails("BMW", 2012)
+    // c1.age(2022)
+document.getElementById("carData").innerHTML = "My car is " + c1.carAge(2022) + " years old!";
+
+
+JavaScript Modules:-
+
+JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain the code-base. JavaScript modules rely on the import and export statements.
+
+a) Export- We can export a function or variable from any file. There are two types of exports: Named and Default.
+-> Named Exports- We can create named exports individually or all at once at the bottom. Examples:-
+
+export const name = "Andrew";
+export const age = 25;
+
+const name = "Andrew";
+const age = 25;
+
+export {name, age};
+
+-> Default Exports- We can only have one default export in a file. Example:-
+
+const message = () => {
+const name = "Jesse";
+const age = 40;
+return name + ' is ' + age + 'years old.';
+};
+
+export default message;
+
+b) Import- A module can be imported in a file in two ways, depending on if they are named exports or default exports. Named exports are constructed using curly braces. Default exports are not. Examples:-
+
+import { name, age } from "./person.js";
+import message from "./message.js";
+
+
+JSON Introduction: It stands for JavaScript Object Notation. JSON is a text format for storing and transporting data. The JSON format is syntactically similar to the code for creating JavaScript objects. 
+JavaScript has a built in function for converting JSON strings into JavaScript objects: JSON.parse()
+JavaScript also has a built in function for converting an object into a JSON string: JSON.stringify()
+
+1) In JSON, keys must be strings, written with double quotes whereas in JavaScript, keys can be strings, numbers, or identifier names.
+2) In JSON, values can be a string, number, object, array, boolean or null whereas in Javascript it can almost be anything.
+3) In JSON, string values must be written in double quotes whereas in JavaScript, we can write string values within double or single quotes.
+4) When using the JSON.parse() on a JSON derived from an array, the method will return a JavaScript array, instead of a JavaScript object.
+
+Example:- 
+{"employees":[
+  { "firstName":"John", "lastName":"Doe" },
+  { "firstName":"Anna", "lastName":"Smith" },
+  { "firstName":"Peter", "lastName":"Jones" }
+]}
+
+Difference between JSON and XML
+a) For AJAX applications, JSON is faster and easier than XML
+b) XML has to be parsed with an XML parser. JSON can be parsed by a standard JavaScript function.
+c) XML is much more difficult to parse than JSON whereas JSON is parsed into a ready-to-use JavaScript object.
+
+
+
+
+17-03-2022
+
+Objects present when Javascript runs in a Web Browser:- There’s a “root” object called window. It has two roles:
+
+1) It is a global object for JavaScript code
+2) Second, it represents the “browser window” and provides methods to control it. For example if we want to retrieve the browser window height, we will use- alert(window.innerHeight);
+
+
+DOM (Document Object Model)- Document Object Model(DOM) represents all the page content as objects that can be modified by Javascript. The "document" object is the main “entry point” to the page. We can change or create anything on the page using it. Whenever a web page gets loaded, the browser creates a Document Object Model of the page. The topmost tree nodes are available directly as document properties:-
+
+a) <html> = document.documentElement
+The topmost document node is document.documentElement. That’s the DOM node of the <html> tag.
+
+b) <body> = document.body
+Another widely used DOM node is the <body> element – document.body. This property can also be null at times if the script tag is present inside the head tag as the browser hadn't reached there.
+
+c) <head> = document.head
+The <head> tag is available as document.head.
+
+
+Child Nodes:-
+a) Child nodes (or children) – elements that are direct children. In other words, they are nested exactly in the given one. For instance, <head> and <body> are children of <html> element. The childNodes collection lists all child nodes, including text nodes. The value of the text node can be accessed by the node's innerHTML property. There’s also a special function elem.hasChildNodes() to check whether there are any child nodes.
+b) Descendants – all elements that are nested in the given one, including children, their children and so on.
+
+Siblings and Parent Node:- Siblings are nodes that are children of the same parent. For instance, here <head> and <body> are siblings.
+1) <body> is said to be the “next” or “right” sibling of <head>
+2) <head> is said to be the “previous” or “left” sibling of <body>
+
+Example:-
+
+// parent of <body> is <html>
+alert( document.body.parentNode === document.documentElement );
+
+// after <head> goes <body>
+alert( document.head.nextSibling ); // HTMLBodyElement
+
+// before <body> goes <head>
+alert( document.body.previousSibling ); // HTMLHeadElement
+
+If we want to access only the node elements and not the text and comment nodes along with it, there are certain tags which we can use with it which includes:-
+a) children – only those children that are element nodes.
+b) firstElementChild, lastElementChild – first and last element children.
+c) previousElementSibling, nextElementSibling – neighbor elements.
+d) parentElement – parent element.
+
+getElement*, querySelector* properties:-
+
+a) If an element has the id attribute, we can get the element using the method document.getElementById(id). Example:-
+
+<script>
+  let elem = document.getElementById('elem');
+  elem.style.background = 'blue';
+</script>
+
+b) querySelector and querySelectorAll
+-> querySelector returns the first element for the given CSS selector.
+-> querySelectorAll(css) returns all elements matching the given CSS selector.
+-> matches: This merely checks if element matches the given CSS-selector. It returns true or false.
+-> getElementsBy: 
+1) elem.getElementsByTagName(tag) looks for elements with the given tag and returns the collection of them. The tag parameter can also be a star "*" for “any tags”.
+2) elem.getElementsByClassName(className) returns elements that have the given CSS class.
+3) document.getElementsByName(name) returns elements with the given name attribute, document-wide. 
+
+Example:-
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Selector Example</title>
+</head>
+
+<body>
+    <ul>
+        <li>The</li>
+        <li>test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>passed</li>
+    </ul>
+
+    <a href="http://example.com/file.zip">...</a>
+    <a href="http://ya.ru">...</a>
+
+    <script>
+        let elements = document.querySelectorAll("ul > li:last-child");
+        for (let i of elements) {
+            alert(i.innerHTML);
+        }
+
+        for (let elem of document.querySelectorAll("a")) {
+            // alert(elem.href);
+            if (elem.matches("a[href$='zip']")) {
+                alert("Link is valid: " + elem.href);
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+Node properties: type, tag and contents:-
+
+a) “nodeType” property- It helps us to get the type of a node. In modern scripts, we can use "instanceof" and other class-based tests to see the node type. It has a numeric value:
+
+-> elem.nodeType == 1 for element nodes
+-> elem.nodeType == 3 for text nodes
+-> elem.nodeType == 9 for the document object
+
+b) nodeName and tagName
+
+-> nodeName: This property returns the name of a node. The tagname (in upper case) for element nodes, The attribute name for attribute nodes, #text for text nodes, #comment for comment nodes, #document for document nodes. Example-
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Name Example</title>
+</head>
+
+<body>
+    <div id="myDIV">This is "myDIV".</div>
+
+    <p>Node name, type and value of "myDIV"s first child is:</p>
+    <p id="demo"></p>
+
+    <script>
+        const element = document.getElementById("myDIV").firstChild;
+        let text = "";
+        text += "Name: " + x.nodeName + "<br>";
+        text += "Value: " + x.nodeValue + "<br>";
+        text += "Type: " + x.nodeType;
+        document.getElementById("demo").innerHTML = text;
+    </script>
+</body>
+
+</html>
+
+-> tagName: The tagName property only returns the tag name of the element node in uppercase.
+
+c) outerHTML: This property contains the full HTML of the element. That’s like innerHTML plus the element itself. But unlike innerHTML, writing to outerHTML does not change the element. Instead, it replaces it in the DOM. Example:-
+
+<body>
+    <div>Hello, world!</div>
+
+    <script>
+        let div = document.querySelector("div");
+
+        // replace div.outerHTML with <p>...</p>
+        div.outerHTML = "<p>A new element</p>";
+        alert(div.outerHTML); // <div>Hello, world!</div> (**)
+    </script>
+</body>
+
+
+HTML attributes- When the browser parses the HTML to create DOM objects for tags, it recognizes standard attributes and creates DOM properties from them. When an element has id or type or another standard attribute, the corresponding property gets created. But that doesn’t happen if the attribute is non-standard. So such non-standard attributes can be accessed by using the following methods:-
+a) elem.hasAttribute(name) – checks for existence.
+b) elem.getAttribute(name) – gets the value.
+c) elem.setAttribute(name, value) – sets the value.
+d) elem.removeAttribute(name) – removes the attribute.
+
+Example:-
+
+<body>
+  <div id="elem" about="Elephant"></div>
+
+  <script>
+    alert( elem.getAttribute('About') ); // (1) 'Elephant', reading
+
+    elem.setAttribute('Test', 123); // (2), writing
+
+    alert( elem.outerHTML ); // (3), see if the attribute is in HTML (yes)
+
+    for (let attr of elem.attributes) { // (4) list all
+      alert( `${attr.name} = ${attr.value}` );
+    }
+  </script>
+</body>
+
+
+BOM (Browser Object Model)- It represents additional objects provided by the browser (host environment) for working with everything inside the browser except the document itself. Functions like alert/confirm/prompt are a part of BOM as they represent pure browser methods of communicating with the user. For instance:
+
+-> The navigator object provides background information about the browser and the operating system. The two most widely used methods are: "navigator.userAgent" – about the current browser, and "navigator.platform" – about the platform (can help to differ between Windows/Linux/Mac etc).
+-> The location object allows us to read the current URL and can redirect the browser to a new one.

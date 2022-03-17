@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Array Parse Example</title>
+</head>
+
+<body>
+    <div class="arrayElements">
+        <p class="element"></p>
+    </div>
+
+    <script>
+        let ele = document.querySelector(".arrayElements .element");
+        const text = '[ "Ford", "BMW", "Audi", "Fiat" ]';
+        const my_arr = JSON.parse(text);
+        ele.innerHTML = my_arr;
+    </script>
+</body>
+
+</html>
