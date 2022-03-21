@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Promise Example</title>
+</head>
+
+<body>
+    <script>
+        const myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let x = 0;
+                if (x == 0) {
+                    resolve("File OK");
+                } else {
+                    reject("File Denied");
+                }
+            }, 3000);
+        });
+
+        myPromise.then(
+            (value) => {
+                alert(value);
+            },
+            (error) => {
+                alert(error);
+            }
+        );
+    </script>
+</body>
+
+</html>

@@ -569,3 +569,265 @@ BOM (Browser Object Model)- It represents additional objects provided by the bro
 
 -> The navigator object provides background information about the browser and the operating system. The two most widely used methods are: "navigator.userAgent" – about the current browser, and "navigator.platform" – about the platform (can help to differ between Windows/Linux/Mac etc).
 -> The location object allows us to read the current URL and can redirect the browser to a new one.
+
+
+
+18-03-2022
+
+Javascript ASync
+
+1) JavaScript Callbacks:- A callback is a function passed as an argument to another function. This technique allows a function to call another function. A callback function can run after another function has finished. When passing a function as an argument, never use parenthesis along with it. Where callbacks really shine are in asynchronous functions, where one function has to wait for another function (like waiting for a file to load). Example:-
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CallBack Function Example</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(something) {
+            document.getElementById("demo").innerHTML = something;
+        }
+
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+
+        myCalculator(5, 5, myDisplayer);
+    </script>
+</body>
+
+</html>
+
+2) JS Asynchronous- Functions running in parallel with other functions and waiting for their turn to be executed are called asynchronous. Egs are setTimeout and setInterval JS functions. For instance, When using the JavaScript function setTimeout(), you can specify a callback function to be executed after a particular amount of time. Example:-
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asynchronous Function Example</title>
+</head>
+
+<body>
+    <h1 id="demo-text"></h1>
+    <script>
+        setTimeout(() => {
+            myFunction("My Text");
+        }, 3000);
+
+        function myFunction(value) {
+            document.getElementById("demo-text").innerHTML = value;
+        }
+    </script>
+</body>
+
+</html>
+
+3) JS Promises- A promise in JavaScript is asynchronous, meaning it takes time to resolve or finish. The code does not directly or immediately return a value. Instead, it returns a promise that it will eventually provide the value at a later time. The JS engine also doesn’t wait around doing nothing – it starts executing other parts of the code, pending the returned value of the promise. A JavaScript Promise object can be:
+-> Pending
+-> Fulfilled
+-> Rejected
+The Promise object supports two properties: state and result.
+
+While a Promise object is "pending" (working), the result is undefined.
+When a Promise object is "fulfilled", the result is a value.
+When a Promise object is "rejected", the result is an error object.
+
+When a certain response or value is returned by the promise, we handle it by using a callback function (promise handlers). These functions are defined in a nested then() method. To specify what callbacks to call, you use the following two functions:
+
+a) resolve(value): This indicates that the asynchronous task was successful. This will call the fulfillment callback in the then() handler.
+b) reject(error): This indicates an error while trying to run the asynchronous task. This will call the rejection callback in the then() handler.
+
+4) JS Async/Await
+
+a) Async - declares an asynchronous function (async function someName(){...}).
+-> Automatically transforms a regular function into a Promise.
+-> When called async functions resolve with whatever is returned in their body.
+-> Async functions enable the use of await.
+
+b) Await - pauses the execution of async functions. (var result = await someAsyncCall();).
+-> When placed in front of a Promise call, await forces the rest of the code to wait until that Promise finishes and returns a result.
+-> Await works only with Promises, it does not work with callbacks.
+-> Await can only be used inside async functions.
+
+Example:-
+
+// Promise approach
+
+function getJSON(){
+
+    // To make the function blocking we manually create a Promise.
+    return new Promise( function(resolve) {
+        axios.get('https://tutorialzine.com/misc/files/example.json')
+            .then( function(json) {
+
+                // The data from the request is available in a .then block
+                // We return the result using resolve.
+                resolve(json);
+            });
+    });
+
+}
+
+// Async/Await approach
+
+// The async keyword will automatically create a new Promise and return it.
+async function getJSONAsync(){
+
+    // The await keyword saves us from having to write a .then() block.
+    let json = await axios.get('https://tutorialzine.com/misc/files/example.json');
+
+    // The result of the GET request is available in the json variable.
+    // We return it just like in a regular synchronous function.
+    return json;
+}
+
+-> We can call our async function like this:
+
+getJSONAsync().then( function(result) {
+    // Do something with result.
+});
+
+
+In case we have multiple independent aynchronous calls to be made and we want to send all requests at the same time, a "Promise.all()" is required. This way all asynchronous calls will be firing in parallel, not one after another.
+
+
+
+19-03-2022
+
+Popup Windows- These are responsible for showing an additional document to the user. When using a popup window, a new window with a particular URL gets opened. One of the most major tasks require the usage of popups i.e. Auth authorization (login with Google)
+
+Popup Blocking- To keep the user safe from accidentaly accessing bad or malicious pages, most of the browsers block popups in case they are called outside of the user-triggered event handlers, such as onclick. Example:-
+
+<body>
+    <script>
+        // The popup window will open in Chrome, but Firefox will block it.
+        // Decreasing the delay will make it work in Firefox too
+        // The difference is that Firefox treats a timeout of 2000ms or
+        // less are acceptable, but after it – removes the “trust”,
+        // assuming that now it’s “outside of the user action”.
+        setTimeout(() => {
+            window.open("https://www.google.com/", 3000);
+        });
+    </script>
+</body>
+
+Popup Opening Syntax:-
+window.open(url, name, params);
+
+a) url: it’s an URL for loading into the new window.
+
+b) name: the name of the new window. Every window should have a window.name, and here it is possible to specify what window to use for the popup. In case, a window with such a name already exists, the given URL opens in it, otherwise, a new window is opened.
+
+c) param: it’s the configuration string for the new window. It includes settings that are delimited with a comma. No spaces should be in params (for example, width:500,height=500).
+
+Some common features of the window include:-
+
+1) left/top (numeric): includes the coordinates of the window top-left corner on the screen.
+2) width/height (numeric): it specifies the width and height of the new window. 
+3) toolbar (yes/no): it either displays or hides the browser navigation bar on the new window.
+4) menubar (yes/no): it displays or hides the browser menu on the new window.
+5) location (yes/no): it displays or hides the field of URL in the new window. FF and IE don’t allow hiding it by default.
+6) status (yes/no): displays or hides the status bar. However, most browsers force it to display.
+7) resizable (yes/no): allows disabling the resize for the new window. It is not recommended for usage.
+8)scrollbars (yes/no): allows disabling the scrollbars for the new window. It is not recommended either.
+
+Example:-
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Features Example</title>
+</head>
+
+<body>
+    <script>
+        let params = `scrollbars=no, resizable=no, location=no, 
+        width=500, height=400, left=100, top=200`;
+        setTimeout(() => {
+            window.open("https://www.google.com/", "Search Tab", params);
+        });
+    </script>
+</body>
+
+</html>
+
+Accessing Popup from Window- The call "open" returns a reference to the new window. It can be applied for manipulating its properties, changing the location, and so on. Example:-
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the Document</title>
+</head>
+
+<body>
+    <script>
+        let newWindow = open("/", "example", "width=500,height=500");
+        newWindow.focus();
+        alert(newWindow.location.href); // (*) about:blank, loading hasn't started yet
+        newWindow.onload = function() {
+            let html = `<div style="font-size:30px">Hello there!</div>`;
+            newWindow.document.body.insertAdjacentHTML("afterbegin", html);
+        };
+    </script>
+</body>
+
+</html>
+
+Closing a Popup- To close a window, we can use: win.close(). For checking whether a window is closed we can run "win.closed". If the window is closed, the closed property is true. Example:-
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the Document</title>
+</head>
+
+<body>
+    <script>
+        let newWindow = open(
+            "https://www.google.com/",
+            "Search Tab",
+            "width=500,height=500"
+        );
+        newWindow.onload(() => {
+            newWindow.close();
+            alert(newWindow.closed); // true
+        });
+    </script>
+</body>
+
+</html>
+
+
+Wrangle data using objects and arrays- The process of producing and mapping useful information from raw data using objects and arrays in javascript is known as wrangling data. It is also referred to as data munging. Data transformation is nothing but data wrangling. For transforming and storing the transformed data, we make use of arrays and objects.
+
+a) Array: JS Arrays are somewhat different from the arrays in other languages.
+-> An empty array can be created in JS and can be populated later with elements.
+-> Arrays in JS are not of a fixed length. The size of array can vary depending upon the addition or deletion of elements.
+-> In Javascript, arrays are of hetrogeneous nature meaning they can store elements of different data types.
+
+Methods for creating an array
+1) let cars = []
+2) let cars = new Array();
+
+Array Operations and methods used for it:-
+1) For inserting an element- push(), unshift()[This method adds the new element at the beginning or first position of the array].
+2) For removing an element- pop()[Removes last element in array], shift()[This method removes the element from the beginning or first position of the array], splice()
+3) For searching an element- find(), indexOf()
+4) For traversing an array- forEach()
+5) Aggregation(min, max, avg element from array)- reduce()
+6) Transformation[Process of creating a new array from an existing one using different techniques]- map()[It creates a new array from calling a function for every array element. It does not change the original array.], filter()[This creates a new array filled with elements that pass a test provided by a function. It does not change the original array], slice()

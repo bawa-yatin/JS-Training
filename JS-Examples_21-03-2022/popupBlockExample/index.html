@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Block Example</title>
+</head>
+
+<body>
+    <script>
+        // The popup window will open in Chrome, but Firefox will block it.
+        // Decreasing the delay will make it work in Firefox too
+        // The difference is that Firefox treats a timeout of 2000ms or
+        // less are acceptable, but after it – removes the “trust”,
+        // assuming that now it’s “outside of the user action”.
+        setTimeout(() => {
+            window.open("https://www.google.com/", 3000);
+        });
+    </script>
+</body>
+
+</html>

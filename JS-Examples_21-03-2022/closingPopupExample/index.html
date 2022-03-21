@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the Document</title>
+</head>
+
+<body>
+    <script>
+        let newWindow = open(
+            "https://www.google.com/",
+            "Search Tab",
+            "width=500,height=500"
+        );
+        newWindow.onload(() => {
+            newWindow.close();
+            alert(newWindow.closed); // true
+        });
+    </script>
+</body>
+
+</html>

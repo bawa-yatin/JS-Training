@@ -1,0 +1,20 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Features Example</title>
+</head>
+
+<body>
+    <script>
+        let params = `scrollbars=no, resizable=no, location=no, 
+        width=500, height=400, left=100, top=200`;
+        setTimeout(() => {
+            window.open("https://www.google.com/", "Search Tab", params);
+        });
+    </script>
+</body>
+
+</html>

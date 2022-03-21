@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the Document</title>
+</head>
+
+<body>
+    <script>
+        let newWindow = open("/", "example", "width=500,height=500");
+        newWindow.focus();
+        alert(newWindow.location.href); // (*) about:blank, loading hasn't started yet
+        newWindow.onload = function() {
+            let html = `<div style="font-size:30px">Hello there!</div>`;
+            newWindow.document.body.insertAdjacentHTML("afterbegin", html);
+        };
+    </script>
+</body>
+
+</html>
