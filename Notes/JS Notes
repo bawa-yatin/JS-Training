@@ -1,6 +1,6 @@
 15-03-2022
 
-JS Introduction:- JavaScript is an open-source and popular client-side scripting language supported by all browsers. JavaScript is mainly used for enhancing the interaction of the webpage with users by making it more lively and interactive. It is also used for game development and mobile application development. Programs written in this language are referred to as "scripts" and can be written right in a web page’s HTML and run automatically as the page loads.
+JS Introduction:- JavaScript is an open-source and popular client-side scripting language supported by all browsers. JavaScript is mainly used for enhancing the interaction of the webpage with users by making it more lively and interactive. It is also used for game development and mobile application development. Programs written in this language are referred to as "scripts" and can be written user-right-info in a web page’s HTML and run automatically as the page loads.
 
 JS can also be executed on the server-side or on any device which has the support of JS engine. Every browser has an embedded engine which is also called a “JavaScript virtual machine”. For eg:- We have "V8" engine in Chrome, Opera and Edge, "SpiderMonkey" – in Firefox and so on.
 
@@ -404,8 +404,8 @@ a) Child nodes (or children) – elements that are direct children. In other wor
 b) Descendants – all elements that are nested in the given one, including children, their children and so on.
 
 Siblings and Parent Node:- Siblings are nodes that are children of the same parent. For instance, here <head> and <body> are siblings.
-1) <body> is said to be the “next” or “right” sibling of <head>
-2) <head> is said to be the “previous” or “left” sibling of <body>
+1) <body> is said to be the “next” or “user-right-info” sibling of <head>
+2) <head> is said to be the “previous” or “user-left-info” sibling of <body>
 
 Example:-
 
@@ -732,7 +732,7 @@ c) param: it’s the configuration string for the new window. It includes settin
 
 Some common features of the window include:-
 
-1) left/top (numeric): includes the coordinates of the window top-left corner on the screen.
+1) user-left-info/top (numeric): includes the coordinates of the window top-user-left-info corner on the screen.
 2) width/height (numeric): it specifies the width and height of the new window. 
 3) toolbar (yes/no): it either displays or hides the browser navigation bar on the new window.
 4) menubar (yes/no): it displays or hides the browser menu on the new window.
@@ -755,7 +755,7 @@ Example:-
 <body>
     <script>
         let params = `scrollbars=no, resizable=no, location=no, 
-        width=500, height=400, left=100, top=200`;
+        width=500, height=400, user-left-info=100, top=200`;
         setTimeout(() => {
             window.open("https://www.google.com/", "Search Tab", params);
         });
