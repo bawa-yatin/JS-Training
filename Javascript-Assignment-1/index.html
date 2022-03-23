@@ -11,11 +11,12 @@
 </head>
 
 <body>
+    <div id="loader"></div>
     <h1 class="assignment-heading">Javascript Assignement 1</h1>
     <section class="card-container">
         <div class="card">
             <table class="user-data-table">
-                <tbody>
+                <tbody id="tableBody">
                     <tr id="table-columns">
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -31,38 +32,73 @@
         <div class="card">
             <div class="user-card">
                 <div class="left">
-                    <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="120" height="120" />
-                    <!-- <h3 class="full-name"></h3> -->
-                    <p>UI Developer</p>
+                    <h2 id="greeting_user"></h2>
+                    <img id="user_avatar" src="" alt="user" width="120" height="120" />
+                    <h3 id="unique_id"></h3>
+                    <h4 class="text-space" id="user_id"></h4>
+                    <h4 class="text-space" id="user_name"></h4>
+                    <h4 class="text-space" id="user_password"></h4>
+                    <h4 class="text-space" id="user_social_no"></h4>
+                    <h4 class="text-space" id="subs_plan"></h4>
+                    <h4 class="text-space" id="subs_term"></h4>
                 </div>
                 <div class="right">
                     <div class="info">
                         <h3>Information</h3>
                         <div class="info_data">
                             <div class="data">
-                                <h4>Email</h4>
-                                <p>alex@gmail.com</p>
+                                <h4>Name</h4>
+                                <p class="data_word_break" id="full_name"></p>
                             </div>
                             <div class="data">
-                                <h4>Phone</h4>
-                                <p>0001-213-998761</p>
+                                <h4>Email</h4>
+                                <p class="data_word_break" id="user_email"></p>
+                            </div>
+
+                            <div class="data">
+                                <h4>Date of Birth</h4>
+                                <p class="data_word_break" id="user_dob"></p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="projects">
+                    <div class="projects">
                         <h3>Projects</h3>
                         <div class="projects_data">
                             <div class="data">
-                                <h4>Recent</h4>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <h4>Gender</h4>
+                                <p class="data_word_break" id="user_gender"></p>
                             </div>
+
                             <div class="data">
-                                <h4>Most Viewed</h4>
-                                <p>dolor sit amet.</p>
+                                <h4>Contact</h4>
+                                <p class="data_word_break" id="user_contact"></p>
+                            </div>
+
+                            <div class="data">
+                                <h4>Address</h4>
+                                <p class="data_word_break" id="user_address"></p>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="projects">
+                        <h3>Employment Details</h3>
+                        <div class="projects_data">
+                            <div class="data">
+                                <h4>Employment Type</h4>
+                                <p class="data_word_break" id="user_emp"></p>
+                            </div>
+                            <div class="data">
+                                <h4>Credit Card Details</h4>
+                                <p class="data_word_break" id="user_cc"></p>
+                            </div>
+                            <div class="data">
+                                <h4>Subscription</h4>
+                                <p class="data_word_break" id="user_subs"></p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- <div class="social_media">
                         <ul>
