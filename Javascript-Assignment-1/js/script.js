@@ -10,6 +10,8 @@ async function getJSONData() {
 
 var userItems = [];
 
+/* Method to get the returned value from promise */
+
 getJSONData().then(data => {
     data.map((values) => {
         userItems.push(values);
@@ -18,10 +20,10 @@ getJSONData().then(data => {
     userSelectedData(0);
 });
 
-
 /* Function to create user list on left side */
 function userList(userData) {
     var tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = "";
     var rowHtml = "";
     for (var i = 0; i < userData.length; i++) {
         rowHtml = `<tr id="${userData[i].id}" onclick=userSelectedData(${i})>
@@ -82,10 +84,10 @@ function deleteData(index) {
                 row.parentNode.removeChild(row);
                 userItems.splice(i, 1);
                 alert("Record Deleted Successfully!!!");
-                // userList(userItems);
             }
         }
+        userList(userItems);
     } else {
-        alert("Operation Cancelled!");
+        alert("Deletion Operation Cancelled!!!");
     }
 }

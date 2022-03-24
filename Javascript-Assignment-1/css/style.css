@@ -44,6 +44,12 @@ body {
     overflow: auto;
 }
 
+@media screen and(max-width:500px) {
+    .card {
+        margin: 10px;
+    }
+}
+
 .card::-webkit-scrollbar {
     width: 10px;
 }
