@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,12 +12,16 @@
 </head>
 
 <body>
-    <div id="loader"></div>
+    <div class="loader">
+        <div class="progress-bar">
+            <h2 style="text-align: center; padding: 20px 10px">Loading...</h2>
+        </div>
+    </div>
     <h1 class="assignment-heading">Javascript Assignement 1</h1>
     <section class="card-container">
         <div class="card">
             <table class="user-data-table">
-                <tbody id="tableBody">
+                <thead class="table-heading">
                     <tr id="table-columns">
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -25,7 +30,8 @@
                         <th>Country</th>
                         <th>Action</th>
                     </tr>
-                </tbody>
+                </thead>
+                <tbody id="tableBody"></tbody>
             </table>
         </div>
 
@@ -41,6 +47,7 @@
                     <h4 class="text-space" id="user_social_no"></h4>
                     <h4 class="text-space" id="subs_plan"></h4>
                     <h4 class="text-space" id="subs_term"></h4>
+                    <h4 class="text-space" id="user_skill" style="margin-bottom: 0"></h4>
                 </div>
                 <div class="right">
                     <div class="info">
@@ -99,20 +106,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="social_media">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
         </div>

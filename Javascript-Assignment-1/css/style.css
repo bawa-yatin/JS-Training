@@ -42,7 +42,6 @@ body {
     text-align: center;
     flex: 100%;
     overflow: auto;
-    height: 600px;
 }
 
 .card::-webkit-scrollbar {
@@ -79,10 +78,51 @@ body {
     overflow: hidden;
 }
 
-.user-data-table tr:first-child {
+.table-heading tr:first-child {
     border-top: none;
     background: #428bca;
     color: #fff;
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: loader 0.5s 2.2s ease-in forwards;
+    z-index: 99;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 12px;
+    background-color: #CCCCCC;
+    position: relative;
+    top: calc(50% - 1px);
+    left: calc(50% - 100px);
+}
+
+.progress-bar:before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 12px;
+    position: absolute;
+    animation: progress 2s ease-in-out forwards;
+}
+
+@keyframes loader {
+    to {
+        left: -100vw;
+    }
+}
+
+@keyframes progress {
+    to {
+        border-left: 200px solid #F14F59;
+    }
 }
 
 .user-data-table tr {
@@ -141,6 +181,9 @@ body {
 }
 
 @media screen and (min-width: 600px) {
+    #tableBody tr:hover:first-child {
+        background-color: #d8e7f3;
+    }
     .user-data-table tr:hover:not(:first-child) {
         background-color: #d8e7f3;
     }
